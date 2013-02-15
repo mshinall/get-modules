@@ -2,7 +2,7 @@
 #
 # https://github.com/mshinall
 #
-# Use CPAN shell to automatically download dependencies listed in the given
+# Use CPAN shell to automatically download module dependencies listed in the given
 # perl scripts
 #
 
@@ -14,7 +14,7 @@ use CPAN;
 my $VERSION = "1.00";
 
 if(scalar(@ARGV) <= 0) {
-    print("Usage: dependencies.pl FILE [FILE ...]\n");
+    print("Usage: get-modules.pl FILE [FILE ...]\n");
     exit(1);
 }
 
@@ -26,14 +26,14 @@ my @excludes = (
     "\\d",
     );
 
-print("Checking the following files for dependencies: \n\t" . join("\n\t", @files) . "\n\n");
+print("Checking the following files for module dependencies: \n\t" . join("\n\t", @files) . "\n\n");
 my %modules = (
     'CPAN' => '1',
     'YAML' => '1',
     );
     
 my $module = "";
-#print("Excluding the following dependencies:\n\t" . join("\n\t", @excludes) . "\n\n");
+#print("Excluding the following module dependencies:\n\t" . join("\n\t", @excludes) . "\n\n");
 foreach my $file (@files)
 {
     my $input;
@@ -54,7 +54,7 @@ foreach my $file (@files)
     }
 }
 
-print("Found the following dependencies: \n\t" . join("\n\t", keys(%modules)) . "\n\n");
+print("Found the following module dependencies: \n\t" . join("\n\t", keys(%modules)) . "\n\n");
 
 #always install pre-reqs
 $ENV{'PERL_MM_USE_DEFAULT'} = 1;
